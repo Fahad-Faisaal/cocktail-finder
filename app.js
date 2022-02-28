@@ -1,13 +1,12 @@
-const toggleSpinner = displayClass => document.getElementById('spinner').classList.add(displayClass);
+const spinner = document.getElementById('spinner');
 
-// toggleSpinner('d-none');
-
+// Loading and displaying initial drinks
 const loadInitialDrinks = async function(){
   const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink');
 
   const data = await response.json();
 
-  displayInitialDrinks(data.drinks)
+  displayInitialDrinks(data.drinks);
 }
 
 loadInitialDrinks();
@@ -29,5 +28,7 @@ const displayInitialDrinks = function(drink){
     `;
 
     drinkContainer.appendChild(card);
+
+    spinner.classList.add('d-none');
   })
 }
